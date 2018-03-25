@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+    body{
+        background: #000;
+    }
+    .clock{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%) translateY(-50%);
+        color: #fff;
+        font-size: 90px;
+        font-color:yellow;
+        border: 5px solid red;
+        padding: 0px 6px 0px 6px;
+
+    }
+    </style>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var session = "AM";
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s + " " + session;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    session = "PM";
+    return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+
+<div id="txt" class="clock"></div>
+
+</body>
+</html>
